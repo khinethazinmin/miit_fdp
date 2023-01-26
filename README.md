@@ -270,6 +270,16 @@ yosys> show
 
 ![image](https://user-images.githubusercontent.com/123365758/214758188-f2c5caf5-202b-4616-8e9e-c80617aba702.png)
 
+yosys> read_liberty –lib ../lib/sky…..
+
+yosys> read_verilog counter_opt
+
+yosys> synth –top counter_opt
+
+![image](https://user-images.githubusercontent.com/123365758/214773176-6878b02c-7f19-490d-95eb-cd71ca27e10b.png)
+
+
+
 
 
 
