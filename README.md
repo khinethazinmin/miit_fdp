@@ -270,17 +270,13 @@ yosys> show
 
 ![image](https://user-images.githubusercontent.com/123365758/214758188-f2c5caf5-202b-4616-8e9e-c80617aba702.png)
 
-yosys> read_liberty –lib ../lib/sky…..
+![image](https://user-images.githubusercontent.com/123365758/214781951-54f9b084-73f4-49fd-ab44-4ea94bd06967.png)
 
-yosys> read_verilog counter_opt
+![image](https://user-images.githubusercontent.com/123365758/214781991-f561ae25-9d6f-41a8-9c9c-2552ed77e510.png)
 
-yosys> synth –top counter_opt
 
-![image](https://user-images.githubusercontent.com/123365758/214773176-6878b02c-7f19-490d-95eb-cd71ca27e10b.png)
 
-yosys>  abc –liberty ../lib/sky…….
 
-![image](https://user-images.githubusercontent.com/123365758/214777011-afd5c82d-b10e-47c3-89bb-f01b323a115a.png)
 
 
 
