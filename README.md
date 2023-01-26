@@ -246,7 +246,18 @@ vim dff_const1.v –o dff_const2.v
 
  
 iverilog dff_const1.v tb_dff_const1.v
+
 ./a .out 
+
+yosys> dfflibmap –liberty ../lib/sky……
+
+yosys> abc –liberty ../lib/sky……
+
+yosys>show
+
+![image](https://user-images.githubusercontent.com/123365758/214757276-69fdd77d-dc57-4651-af4d-22803633afdf.png)
+
+
 
 
 
