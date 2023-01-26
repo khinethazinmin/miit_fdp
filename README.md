@@ -263,6 +263,11 @@ yosys> synth –top dff_const2
 
 ![image](https://user-images.githubusercontent.com/123365758/214757838-17fc4d3c-20bd-4f97-b9a3-5e956be4be6e.png)
 
+yosys> show
+
+![image](https://user-images.githubusercontent.com/123365758/214758188-f2c5caf5-202b-4616-8e9e-c80617aba702.png)
+
+
 
 
 
