@@ -302,6 +302,12 @@ yosys> show
 
 ![image](https://user-images.githubusercontent.com/123365758/214784143-9c1154fc-1cd8-42e5-af90-5533c5909b25.png)
 
+# Day 4: Gate Level Simulations,Blocking vs Non Blocking assignments,Synthesis-Simulation Mismatch
+
+# Synthesis Simulation Mismatches
+
+
+
 
 
 
