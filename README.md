@@ -362,6 +362,22 @@ end
 
 endmodule
 
+Other example:
+
+module comblogic(input a, input b, input c, output reg y);
+
+reg q0;
+
+always @(*)
+
+begin
+	y = q0 & c;
+	q0 = a|b;
+	
+end
+
+endmodule
+
 
 
 
