@@ -178,6 +178,80 @@ endmodule
 
 ![image](https://user-images.githubusercontent.com/123365758/214752577-d6c4c762-3e19-48b1-8889-fc583d2371c8.png)
 
+# Day – 3
+
+# Combinational and Sequential Optimisations
+
+opt_check.v
+
+module opt_check (input a, input b , output y);
+
+	assign y = a?b:0;
+	
+endmodule
+
+abc -liberty ../my_lib/lib/sky130_fd_sc_hd_tt_025C_1v80.lib  
+
+ write_verilog -noattr opt_check_netlist.v 
+ 
+ show
+
+ ![image](https://user-images.githubusercontent.com/123365758/214754574-79a88822-5a29-4207-bca9-39a066417849.png)
+
+
+yosys> synth –top opt_check2
+
+![image](https://user-images.githubusercontent.com/123365758/214754602-342e597a-8d1a-4fcf-8148-f9c7c91c6ef7.png)
+
+ 
+opt_clean –purge
+ 
+![image](https://user-images.githubusercontent.com/123365758/214754623-dc905905-30aa-44f1-b0c2-112f14d942a8.png)
+
+yosys> abc –liberty ../lib/sky….
+
+![image](https://user-images.githubusercontent.com/123365758/214754653-42b1fffb-ef8f-4288-afe7-b8941e5a85ac.png)
+
+ 
+yosys> show command used
+
+ ![image](https://user-images.githubusercontent.com/123365758/214754669-7efd51d8-b6cd-4a43-b490-11c5fc92155a.png)
+
+yosys> read_liberty –lib ../lib/sky….
+
+Yosys> read_verilog opt_check3.v
+
+![image](https://user-images.githubusercontent.com/123365758/214754712-12f69eb6-64ba-4535-a869-ab67f98a6acb.png)
+
+ 
+yosys> synth –top opt_check3
+ 
+ ![image](https://user-images.githubusercontent.com/123365758/214754734-1d52cf11-6925-4e77-9d8c-bd00a39c3426.png)
+
+
+yosys> opt_clean –purge
+
+yosys> and –liberty ../lib/sky…
+
+ ![image](https://user-images.githubusercontent.com/123365758/214754762-b7094691-fd12-4516-aabb-4cf56337a41e.png)
+
+ 
+yosys> show command used
+
+ ![image](https://user-images.githubusercontent.com/123365758/214754794-c7f0903d-941a-47b0-89dd-495c5dc4f703.png)
+
+vim dff_const1.v –o dff_const2.v
+
+![image](https://user-images.githubusercontent.com/123365758/214754820-0c1ef5ec-d77d-4515-8b98-dbb084a74ace.png)
+
+ 
+iverilog dff_const1.v tb_dff_const1.v
+./a .out 
+
+
+
+
+
 
 
 
