@@ -274,6 +274,26 @@ yosys> show
 
 ![image](https://user-images.githubusercontent.com/123365758/214781991-f561ae25-9d6f-41a8-9c9c-2552ed77e510.png)
 
+![image](https://user-images.githubusercontent.com/123365758/214783973-ce57acc4-2013-46de-bda1-09db91cb5014.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214784020-ee59ef3e-9323-4cca-a659-996375ed1ff8.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214784053-1dd54c90-248a-4cae-9aa4-8c6a5560c683.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214784081-ed46c1a4-14a6-4b8d-b8de-4cce5818795d.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214784122-96c55bfa-db22-41e0-89ae-6660f22860ed.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214784143-9c1154fc-1cd8-42e5-af90-5533c5909b25.png)
+
+
+
+
+
+
+
+
+
 
 
 
