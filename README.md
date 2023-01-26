@@ -333,6 +333,35 @@ end
 
 endmodule
 
+# Blocking and non blocking statements 
+
+module shift_register(input clk, input reset, input d, output reg q1);
+
+reg q0;
+
+always @(posedge clk,posedge reset)
+
+begin
+	if(reset)
+	
+	begin
+		q0 = 1'b0;
+		q1 = 1'b0;
+		
+	end
+	
+	else
+	
+	begin
+		q0 = d;
+		q1 = q0;
+		
+	end
+	
+end
+
+endmodule
+
 
 
 
