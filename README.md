@@ -386,6 +386,41 @@ endmodule
 
 ![image](https://user-images.githubusercontent.com/123365758/214803888-4104b4b1-e305-4bff-b315-fbebe95deab3.png)
 
+Example 2:
+
+module bad_mux (input i0 , input i1 , input sel , output reg y);
+
+always @(sel)
+
+begin
+	if(sel)
+		y <= i1;
+	else
+		y <= i0;
+		
+end 
+
+endmodule
+
+![image](https://user-images.githubusercontent.com/123365758/214809012-4ad85201-48b2-47b9-95ca-86ca43f0bcf6.png)
+
+module blocking_caveat (input a , input b , input c , output reg d);
+
+reg x;
+
+always @(*)
+begin
+	d = x & c;
+	x = a | b;
+	
+end 
+
+endmodule
+
+
+
+
+
 
 
 
