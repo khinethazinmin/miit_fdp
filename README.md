@@ -308,18 +308,31 @@ yosys> show
 
 module mux(input i0, input i1, input sel, output reg y);
 
+
 always @(sel)
+
 begin
+
 	if (sel)
+	
 	begin
+	
 		y = i1;
+		
 	end
+	
 	else
+	
 	begin
+	
 		y = i0;
+		
 	end
+	
 end
+
 endmodule
+
 
 
 
