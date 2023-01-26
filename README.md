@@ -90,7 +90,8 @@ yosys>!vim multiple_modules_hier.v
 yosys> show
 
 ![image](https://user-images.githubusercontent.com/123365758/214514272-d2b9faa1-94e3-48bb-888e-875a7042923b.png)
-#SUB MODULE LEVEL SYNTHESIS AND ITS NECESSITY
+
+# SUB MODULE LEVEL SYNTHESIS AND ITS NECESSITY
 
 In the following example, I am going to synthesize at sub_module 1 level
 
