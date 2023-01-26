@@ -278,6 +278,10 @@ yosys> synth –top counter_opt
 
 ![image](https://user-images.githubusercontent.com/123365758/214773176-6878b02c-7f19-490d-95eb-cd71ca27e10b.png)
 
+yosys>  abc –liberty ../lib/sky…….
+
+![image](https://user-images.githubusercontent.com/123365758/214777011-afd5c82d-b10e-47c3-89bb-f01b323a115a.png)
+
 
 
 
