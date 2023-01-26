@@ -404,6 +404,9 @@ endmodule
 
 ![image](https://user-images.githubusercontent.com/123365758/214809012-4ad85201-48b2-47b9-95ca-86ca43f0bcf6.png)
 
+![image](https://user-images.githubusercontent.com/123365758/214810628-9d3ebf5d-95ab-4678-a05b-c1e70e8fa546.png)
+
+
 module blocking_caveat (input a , input b , input c , output reg d);
 
 reg x;
