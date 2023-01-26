@@ -227,6 +227,11 @@ Yosys> read_verilog opt_check3.v
 yosys> synth –top opt_check3
  
  ![image](https://user-images.githubusercontent.com/123365758/214754734-1d52cf11-6925-4e77-9d8c-bd00a39c3426.png)
+ 
+ ![image](https://user-images.githubusercontent.com/123365758/214786964-f684c5e1-5a86-4eae-95f1-1e29101edda0.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214787864-8e448a8d-5fef-46a5-831a-97dc47d15ec9.png)
+
 
 
 yosys> opt_clean –purge
@@ -250,6 +255,17 @@ iverilog dff_const1.v tb_dff_const1.v
 ./a .out 
 
 ![image](https://user-images.githubusercontent.com/123365758/214771993-6564183e-8495-46fc-8000-745e77b768cb.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214785580-4c3af457-82ac-49c1-8b2c-2f7ba1c50790.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214785603-3d2d09a0-faf1-42aa-8ffb-362d92aca07d.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214786424-1e4135d9-f486-430b-90e6-f35404152df8.png)
+
+
+![image](https://user-images.githubusercontent.com/123365758/214786459-967d0539-2b6c-44e7-be6e-6cca2c66ca1f.png)
+
+
 
 
 yosys> dfflibmap –liberty ../lib/sky……
