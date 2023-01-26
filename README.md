@@ -378,6 +378,18 @@ end
 
 endmodule
 
+# Labs on GLS and Synthesis-Simulation Mismatch
+
+![image](https://user-images.githubusercontent.com/123365758/214803790-3c188d8d-c4f5-49d8-ac1c-5a2676fe5862.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214803841-50da6b38-9828-4bea-9444-502c8cbba6ae.png)
+
+![image](https://user-images.githubusercontent.com/123365758/214803888-4104b4b1-e305-4bff-b315-fbebe95deab3.png)
+
+
+
+
+
 
 
 
