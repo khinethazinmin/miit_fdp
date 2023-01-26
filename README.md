@@ -90,6 +90,112 @@ yosys>!vim multiple_modules_hier.v
 yosys> show
 
 ![image](https://user-images.githubusercontent.com/123365758/214514272-d2b9faa1-94e3-48bb-888e-875a7042923b.png)
+#SUB MODULE LEVEL SYNTHESIS AND ITS NECESSITY
+
+In the following example, I am going to synthesize at sub_module 1 level
+
+yosys>synth –top sub_modules1
+
+yosys>abc –liberty ../lib/ sky130_fd_sc_hd__tt_025C_1v80.lib
+
+yosys>show
+
+After above command, the following result will be shown.
+
+![image](https://user-images.githubusercontent.com/123365758/214751668-e27717ef-dcd7-44ae-970e-e0a6df4f16db.png)
+
+Glitches
+
+Asynchronous and Synchronous Resets
+
+In yosys terminal, type the command - !vim dff_asyncres.v –o dff_async_set.v
+
+![image](https://user-images.githubusercontent.com/123365758/214751736-a1fac05d-d5a8-4c01-bcb3-443872a229db.png)
+
+$ iverilog dff_asyncres.v tb_dff_asyncres.v
+
+$./a.out
+
+$gtkwave tb_dff_asyncres.vcd
+
+![image](https://user-images.githubusercontent.com/123365758/214751844-53e7bf91-3ab1-4339-b500-bf6427090578.png)
+
+•	Q follows d only at the posedge of the clock.
+
+•	But as and when async_rest=1,Q becomes 0 without waiting for the next edge of the clock.
+
+![image](https://user-images.githubusercontent.com/123365758/214752089-68d58789-748f-443f-b252-c061752a5121.png)
+
+•	But when async_reset goes low(1 to 0),Q doesn't become 1 immediately ,it waits for the next clock edge to follow D.
+
+•	Even if asunc_reset=1 and D=1, Q=0 as reset takes high precedence(that is how the code has been written,if condition of reset is checked first).
+
+Synthesis implementation results : asynchronous set:
+
+![image](https://user-images.githubusercontent.com/123365758/214752171-5969f717-9ccb-40cb-bba7-41c59c6d5b7a.png)
+
+Synthesis implementation results : asynchronous reset
+
+![image](https://user-images.githubusercontent.com/123365758/214752226-02ab2329-8156-4258-b1ac-c5971fd913f8.png)
+
+For Synchronous, Synchronous Reset and set :
+
+![image](https://user-images.githubusercontent.com/123365758/214752284-430d7821-8205-4288-abba-7524ed70ed10.png)
+
+Synthesis Results:
+
+![image](https://user-images.githubusercontent.com/123365758/214752327-cb15918d-3cc5-4b97-8d7b-0571d6d3dcaa.png)
+
+Case wherein both both asynchronous and synchronous resets are applied together :
+RTL Code:
+
+![image](https://user-images.githubusercontent.com/123365758/214752372-e0dc9787-6380-4cbc-afae-36819475aef2.png)
+
+Synthesis results:
+
+![image](https://user-images.githubusercontent.com/123365758/214752401-2a0f014f-0b45-42cb-b3cb-3eb6b573e3c8.png)
+
+Optimization
+
+Let's Consider the following design where the 3 bit input is multiplied by 2 and the output is a 4 bit value.
+
+RTL Code
+
+![image](https://user-images.githubusercontent.com/123365758/214752480-a5373d69-51e8-4228-b72f-0b5a50fe6750.png)
+
+Synthesis Result:
+
+![image](https://user-images.githubusercontent.com/123365758/214752520-1427ba8b-ee18-4b83-adfb-68e1d26887e6.png)
+
+Let's consider the following design where the 3 bit input is multiplied by 9 and the output is a 6 bit value.
+
+module mult8 (input [2:0] a , output [5:0] y);
+
+	assign y = a* 9;
+ 
+endmodule
+
+![image](https://user-images.githubusercontent.com/123365758/214752577-d6c4c762-3e19-48b1-8889-fc583d2371c8.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
