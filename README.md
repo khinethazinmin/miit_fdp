@@ -257,6 +257,14 @@ yosys>show
 
 ![image](https://user-images.githubusercontent.com/123365758/214757276-69fdd77d-dc57-4651-af4d-22803633afdf.png)
 
+yosys> read_verilog  dff_const2.v
+
+yosys> synth –top dff_const2
+
+![image](https://user-images.githubusercontent.com/123365758/214757838-17fc4d3c-20bd-4f97-b9a3-5e956be4be6e.png)
+
+
+
 
 
 
