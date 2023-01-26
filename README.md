@@ -249,6 +249,9 @@ iverilog dff_const1.v tb_dff_const1.v
 
 ./a .out 
 
+![image](https://user-images.githubusercontent.com/123365758/214771993-6564183e-8495-46fc-8000-745e77b768cb.png)
+
+
 yosys> dfflibmap –liberty ../lib/sky……
 
 yosys> abc –liberty ../lib/sky……
