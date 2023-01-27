@@ -386,6 +386,9 @@ endmodule
 
 ![image](https://user-images.githubusercontent.com/123365758/214803888-4104b4b1-e305-4bff-b315-fbebe95deab3.png)
 
+![image](https://user-images.githubusercontent.com/123365758/215038038-0f02a6b1-6fa1-4334-905e-5b752521b244.png)
+
+
 Example 2:
 
 module bad_mux (input i0 , input i1 , input sel , output reg y);
