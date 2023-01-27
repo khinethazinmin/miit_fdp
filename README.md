@@ -438,6 +438,9 @@ Here , I observe that the circuit behaves as intended combinational ckt. Output 
 
 ![image](https://user-images.githubusercontent.com/123365758/214815678-2d5e665c-1fee-40f0-a318-806fc86dd71d.png)
 
+![image](https://user-images.githubusercontent.com/123365758/215040806-90b7c84f-f4c6-4443-99f0-4434c40c1555.png)
+
+
 
 
 
