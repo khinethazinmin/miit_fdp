@@ -406,6 +406,7 @@ endmodule
 
 ![image](https://user-images.githubusercontent.com/123365758/214810628-9d3ebf5d-95ab-4678-a05b-c1e70e8fa546.png)
 
+Example 3: This is an example of synthesis-simulation mismatch due to wrong order of assignment in blocking assignments.
 
 module blocking_caveat (input a , input b , input c , output reg d);
 
