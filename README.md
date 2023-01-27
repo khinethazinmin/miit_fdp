@@ -425,6 +425,8 @@ endmodule
 
 ![image](https://user-images.githubusercontent.com/123365758/214813737-31b9dc86-9e01-4db5-88fa-0a8ff500d4ac.png)
 
+If we run gate level simulations on this netlist in verilog, we observe the following waveform.
+
 ![image](https://user-images.githubusercontent.com/123365758/214815678-2d5e665c-1fee-40f0-a318-806fc86dd71d.png)
 
 
