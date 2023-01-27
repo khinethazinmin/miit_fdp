@@ -428,6 +428,8 @@ If we run gate level simulations on this netlist in verilog, we observe the foll
 
 ![image](https://user-images.githubusercontent.com/123365758/214813737-31b9dc86-9e01-4db5-88fa-0a8ff500d4ac.png)
 
+Here , I observe that the circuit behaves as intended combinational ckt. Output d results from the present value of inputs, and not the previous clock values like in the simulation results. Since the waveforms of the stimulated RTL verilog code do not match with the gate level simulation of generated netlist,we get a Synthesis-Simulation Mismatch again.
+
 
 ![image](https://user-images.githubusercontent.com/123365758/214815678-2d5e665c-1fee-40f0-a318-806fc86dd71d.png)
 
