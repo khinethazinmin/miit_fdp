@@ -440,8 +440,274 @@ Here , I observe that the circuit behaves as intended combinational ckt. Output 
 
 ![image](https://user-images.githubusercontent.com/123365758/215040806-90b7c84f-f4c6-4443-99f0-4434c40c1555.png)
 
+# Day 5 - If, Case, For Loop and For Generate
 
+# If Constructs
 
+If condition is used to to write priority logic. The condition one has a priority or if has more priority than the consecutive else statements . Only when condition 1 is not met condition 2 is evaluated and so on and y is assigned accordingly depending on the matching conditions.
+
+if (cond_1)
+
+begin 	
+
+	y = statement_1;
+	
+	
+end
+
+else if (cond_2)
+
+begin
+
+	y = statement_2;
+	
+end
+
+else if (cond_3)
+
+begin
+
+	y = statement_3;
+	
+end
+
+else
+
+begin
+
+	y = statement_4;
+	
+end
+
+If-else block implements a Priority logic that is if cond_1 is satisfied, next if statements are not executed. Thus above If-Else code translates to a ladder like multiplexer structure in the final design instead of a single multiplexer.
+
+Dangers of using Incomplete If statements Inferred Logic which occurs due to bad coding styles that is incomplete if statements.
+
+if (condt1) 
+
+    y-a;
+    
+else if (condt2)
+
+    y=b;
+    
+    n the above code if condition 1 is matched y is equal to a else if condition 2 is matched y is equal to b but there is no specification for the case when condition2 is not matched, as a result of which the simulator tries to latch this case to the output y.It wants to retain the value of y.
+    
+This is a combinational loop to avoid that the simulator infers a latch. Enable of this latch is OR of the condition 1 and condition 2. If neither condition 1 or condition 2 is met the OR gate output disables the latch . The latch retains the value of y and stores it.
+
+This is called the inferred latch due to incomplete if statements which is very dangerous for RTL designing. It should be avoided except for some special cases like the counter.
+
+reg[2:0]
+
+always @(posedge clk,posedge reset)
+
+Begin
+
+If (reset)
+
+Count<= 3'b000;
+
+else if(enable)
+
+Count<= count+1;
+
+end
+
+This is also a case of incomplete if statements. Here ,if there is no enable the counter should latch onto the previous value.For example if the counter has counted up till 4 and there is no enable then it should retain the value 4 rather than going to 0 again.
+
+So here the incomplete if statements result in latching And retaining the previous value which is our desired behavior in a counter. The earlier mux example was a combinational circuit and therefore I cannot has inferred latches.
+
+Note:
+
+If, case statements are used inside always block.
+
+In verilog whatever variable we use to assign in if or case statements must be a register variable.
+
+# CASE Constructs
+
+Let's look at the following verilog code block. Here, the inferred hardware should be a 4:1 multiplexer. The CASE statements do not have priority logic like IF statements.
+
+always @(*)
+
+begin
+
+     case(sel)
+     
+		2'b00: begin
+		
+			y = statement_1;
+			
+			end
+			
+		2'b01: begin
+		
+			y = statement_2;
+			
+			end
+			
+		2'b10: begin
+		
+			y = statement_3;
+			
+			end
+			
+		2'b11: begin
+		
+			y = statement_4;
+			
+			end
+			
+	endcase
+	
+end
+
+Depending on the cases matching the select y is assigned accordingly.
+
+Some caveats with using CASE statements:
+
+#  1.Incomplete CASE
+
+reg [1:0] sel
+
+always @(*)
+
+begin
+
+     case(sel)
+     
+     2'b00: begin
+     
+                   . condition 1
+		   
+                   end
+		   
+     2'b01: begin
+     
+                   . condition 2
+		   
+                   end
+    end case
+    
+    end
+    
+    Then select is C1 or C3 the conditions are not specified. It causes an incomplete case which results in inferred latches for these two cases that latch on to output y.This occurs when some cases are not specified inside the CASE block .For example, if the 2'b10 and 2'b11 cases were not mentioned , the tool would synthesize inferred latches at the 3rd and 4th inputs of the multiplexer.
+    
+Solution is code case with default inside the CASE block so that the tool knows what to do when a case that is not specified occurs.
+
+Correct code :
+
+reg [1:0] sel
+
+always @(*)
+
+begin
+
+     case(sel)
+     
+     2'b00: begin
+     
+                   . condition 1
+		   
+                   end
+		   
+     2'b01: begin
+     
+                   . condition 2
+		   
+                   end
+		   
+    default :begin
+                   .
+		   condition 3
+		   
+                   end  
+		   
+    end case
+    
+    end
+    
+ #  2.Partial assignments
+ 
+ always @(*)
+ 
+begin
+
+	case(sel)
+	
+		2'boo: begin
+		
+			x = a;
+			
+			y = b;
+			
+		2'b01: begin
+		
+			x = c;
+			
+		default: begin
+		
+			x = d;
+			
+			y = d;
+			
+			end
+	endcase
+	
+end
+
+# 3.Overlapping cases
+
+always @(*)
+
+begin
+
+	case(sel)
+	
+		2'b00: begin
+		
+			y = a;
+			
+		2'b01: begin
+		
+			y = b;
+			
+			end
+			
+		2'b10: begin
+		
+			y = c;
+			
+		2'b1?: begin
+		
+			y = d;
+			
+			end
+			
+	endcase
+	
+end
+
+# Labs on Incorrect IF and CASE constructs
+
+Example 1: Incomplete If statements
+
+Below is the file titled incomp_if.v, and can be found in the directory verilog_files.
+
+module incomp_if(input i0 , input i1 , input i2 , output reg y);
+
+always @(*)
+
+begin
+
+	if(i0)
+	
+		y <= i1;
+		
+end
+
+endmodule
+
+The code contains an incomplete IF statement as no else condition corresponding to it is mentioned . On simulating this design , following gtkwave is obtained
 
 
 
