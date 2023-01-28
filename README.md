@@ -749,6 +749,29 @@ Observation: When io is high,output follows i1. When io is low,it looks for i2.I
 
 This can be verified by checking the graphical realisation of the yosys synthesis below.
 
+![image](https://user-images.githubusercontent.com/123365758/215285279-5b5fe8d8-d008-46cd-bc92-7d31e5965207.png)
+
+Yosys synthesizes a multiplexer as well as a latch with some combinational logic at its enable pin.
+
+Example3:
+
+Below is a design with Incomplete Case's specification in a mux.
+
+module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel , output reg y);
+
+always @ (*)
+
+begin
+	case(sel)
+	
+		2'b00: y = i0;
+		2'b01: y = i1;
+		
+	endcase
+	
+end
+
+endmodule
 
 
 
