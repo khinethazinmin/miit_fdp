@@ -773,6 +773,47 @@ end
 
 endmodule
 
+The truth table for the above 2X1 mux looks like:
+
+sel[1]	sel[0]	y
+
+0	0	io
+
+0	1	i1
+
+1	0	latch
+
+1	1	latch
+
+Whenever se[1]=1 ,latching action takes place. The yosys synthesis implementation is given below.
+
+![image](https://user-images.githubusercontent.com/123365758/215285531-7c36a941-85b2-40e5-a4cd-a7af439c3835.png)
+
+Observation: 1. !(sel[1]) is going to D latch enable. 2.The inputs io,sel[0], !(sel[1]) go to the upper mixing logic that is implemented on D pin of the latch.
+
+Example 4:
+
+Complete Mux along with all the cases specified.
+
+module comp_case (input i0 , input i1 , input i2 , input [1:0] sel , output reg y);
+
+always @ (*)
+
+begin
+
+	cae(sel)
+	
+		2'b00: y = i0;
+		2'b01: y = i1;
+		default:y = i2;
+		
+	endcase
+	
+end
+
+endmodule
+
+
 
 
 
