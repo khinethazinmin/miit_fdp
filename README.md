@@ -813,6 +813,10 @@ end
 
 endmodule
 
+Output follows i2 at default case,if i1 and io go low. Hence a 4X1 mux is synthesized without any latch that can be verified below.
+
+![image](https://user-images.githubusercontent.com/123365758/215285774-0cdf4c36-86b8-40d4-a015-c9a8b7b550ab.png)
+
 
 
 
