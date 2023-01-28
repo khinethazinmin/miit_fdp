@@ -1024,6 +1024,11 @@ The above code has good readabilty,scalability and easy to write as well. Let's 
 
 ![image](https://user-images.githubusercontent.com/123365758/215290050-a3c05760-d55c-4dd8-a579-40c387c650a9.png)
 
+$ gvim rca.v fa.v -o
+
+![image](https://user-images.githubusercontent.com/123365758/215290267-23031877-5166-499d-82b1-f52c7dbea65b.png)
+
+
 
 
 
