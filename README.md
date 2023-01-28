@@ -900,6 +900,134 @@ Whereas while running GLS on the netlist,the waveform of the synthesized netlist
 
 Thus ,Overlapping cases confuse the simulator and leads to Synthesis-Simulation Mismatches.
 
+# Introduction to Looping Constructs
+
+There are two types of FOR loops in verilog.
+
+1.FOR loop 1.Used within the always block 2.Used to evaluate expressions
+
+2.Generate FOR loop 1.Only used outside the always block 2.Used for instantiating hardware
+
+# Necessity of FOR loops
+
+For loops are extremely useful when we want to write a code /design that involves multiple assignments or evaluations within the always block. Lets us take an example: If we want to write the code for 4:1 multiplexer, we can easily do so using a either four if blocks or using a case block with 4 cases,as seen in the previous if-else blocks.But this approach is not suitable for complicated design with numerous inputs/outputs say 256X1 mux.If we wanted to design a 256X1 multiplexer, we will have to write 256 lines of condition statements using select and corresponding assignments. But in for loop ,be it 4X1 or 256X1 we would always be writing 4 lines of code only. Although we need to provide 256 inputs using an internal bus.
+
+integer k;
+
+always @(*)
+
+begin
+
+	for (k = 0, k < 256, k= i  +1)
+	begin
+		if (k== sel)
+		
+			y = in[i];
+			
+		end
+	end
+end
+
+This code can be infinitely scaled up by just replacing the condition i < 256 with the desired specification for our multiplexer.
+
+Similarly, I can create High input demultiplexers as well.
+
+integer k
+
+always @(*)
+
+begin
+
+	int_bus[15:0] = 16b'0;
+	
+	for (k= 0; k< 16; k= k+ 1) 
+	
+	begin
+		if (k == sel)
+		
+			int_bus[k] = inp[k];
+		end
+		
+	end
+	
+end
+
+Here , I have created a 16:1 demultiplexer using for loops within the always block. The int_bus[15:0] specifies our internal bus which takes on the input of the demux. It is necessary to assign all outputs to low for a new value of sel else latches will be inferred resulting in the incorrect implementation of our logic.
+
+Below are few of the examples of FOR construct .
+
+Example 1:
+
+file mux_generate.v that generates a 4X1 mux using For loop.
+
+module mux_generate (input  i0, input i1 , input i2 , input i3 , input [1:0] sel , output reg y);
+
+wire [3:0] i_int;
+
+assign i_int = {i3,i2,i1,i0};
+
+integer k;
+
+always @(*)
+
+begin
+
+	for(k = 0; k < 4; k=k+1)begin
+		if(k == sel)
+		
+			y = i_int[k];
+	end
+	
+end
+
+endmodule
+
+The 4 inputs get assigned to a the internal 4 bit bus named i_int.
+
+![image](https://user-images.githubusercontent.com/123365758/215288930-ba16c2c9-c2f3-4d67-9c8f-7f79655ed144.png)
+
+The gtkwave obtained after the simulation.
+
+![image](https://user-images.githubusercontent.com/123365758/215289145-c15c1adb-6f0e-4b65-a220-a944ae166898.png)
+
+Example 2:
+
+Similar to example 1, file demux_generate.v that generates a 4X1 demux using For loop.
+
+module demux_generate (output o0 , output 02 , output o3 ,  output o4 , output o5 , output o6 , output o7 , input [2:0] sel , input i);
+
+reg [7:0]y_int;
+
+assign {o7,o6,o5,o4,o3,o2,o1,o0} = y_int;
+
+integer k;
+
+always @(*)
+
+begin
+
+	y_int = 8'bo;
+	for( k = 0; k < 8; k++) begin
+		if(k == sel)
+			y_int[k] = i;
+	end
+	
+end 
+
+endmodule
+
+The above code has good readabilty,scalability and easy to write as well. Let's verify if it functions as a 8X1 demux as expected by viewing its gtkwave simulated waveform.
+
+![image](https://user-images.githubusercontent.com/123365758/215289528-8cc9b5d9-b6f8-412a-bd88-39cdc036cbcd.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215289618-21e910b0-91e6-478d-830b-f3091fbb3224.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215290050-a3c05760-d55c-4dd8-a579-40c387c650a9.png)
+
+
+
+
+
 
 
 
