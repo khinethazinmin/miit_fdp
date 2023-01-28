@@ -709,6 +709,49 @@ endmodule
 
 The code contains an incomplete IF statement as no else condition corresponding to it is mentioned . On simulating this design , following gtkwave is obtained
 
+$gvim *incomp* -o
+
+![image](https://user-images.githubusercontent.com/123365758/215243083-68ae9dd9-8a05-47d4-913f-7f82abcd98fb.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215243471-3a652e8e-1fae-4418-8326-1b2a1174fc01.png)
+
+From the above waveform, I observe no change in y when i0=0.It's equal to previous value when io=0. This shows latching Action, which is verified by looking at the synthesis implementation using Ysosys.
+
+![image](https://user-images.githubusercontent.com/123365758/215244720-434a1731-f80a-4fa0-9047-1d48065a2819.png)
+
+We see a D latch is created in the synthesized netlist.
+
+Example 2:
+
+Below is a similar example of incomp_if2.v
+
+module incomp_if2(input i0 , input i1 , input i2 , input i3,  output reg y);
+
+always @(*)
+
+begin
+
+	if(i0)
+		y <= i1;
+		
+	else if (i2)
+		y <= i3;
+
+end
+
+endmodule
+
+The above code contains an incomplete IF statement as well. Here, I have 2 inputs i1 and i3, as well as 2 conditional inputs i0 and i2. As I do not specifythe case when both i0 and i2 go low,which results in an issue in the synthesis. The gtkwaveform of the simulated design is below
+
+![image](https://user-images.githubusercontent.com/123365758/215247904-587351ec-7978-4a98-b60f-21387f94412b.png)
+
+Observation: When io is high,output follows i1. When io is low,it looks for i2.If i2 is high,it follows i3. But if i2 is low(and io is already low),y attains a constant value=previous output.
+
+This can be verified by checking the graphical realisation of the yosys synthesis below.
+
+
+
+
 
 
 
