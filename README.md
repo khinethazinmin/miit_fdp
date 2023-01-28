@@ -1022,11 +1022,73 @@ The above code has good readabilty,scalability and easy to write as well. Let's 
 
 ![image](https://user-images.githubusercontent.com/123365758/215289618-21e910b0-91e6-478d-830b-f3091fbb3224.png)
 
-![image](https://user-images.githubusercontent.com/123365758/215290050-a3c05760-d55c-4dd8-a579-40c387c650a9.png)
+![image](https://user-images.githubusercontent.com/123365758/215290597-de09b76a-4648-408e-8683-3a12b334727b.png)
+
+
+# FOR Generate and its Uses
+
+FOR Generate is used when I needto create multiple instances of the same hardware. I must use the For generate outside the always block.
+
+I take example of a 8 bit Ripple Carry Adder(RCA) to understand the ease of instantiations provided by the For generate statement. An RCA consists of Full Adders tied in series where the carry out of the previous full adder is fed as the carry in bit of the next full adder in the chain. Hence, I can make use of generate for to instantiate every full adder in the design , as they are all represent the same hardware.
+
+For this example , I use the file rcs.v which holds the code for the ripple carry adder. It also needs to be included in our simulation.
+
+module rca (input [7:0] num1 , input  [7:0] num2 , output [8:0] sum);
+
+wire [7:0] int_sum;
+
+wire [7:0] int_co;
+
+genvar i;
+
+generate
+
+	for (i = 1; i < 8; i=i+1) begin
+	
+		fa u_fa_1 (.a(num1[i]),.b(num2[i],.c(int_co[i-1],.co(int_co[i]),.sum(int_sum[i]));
+	end
+
+endgenerate
+
+fa u_fa_0 (.a(num1[0]),.b(num2[0]),.c(1'b0),.co(int_co[0]),.sum(int_sum[0]));
+
+assign sum[7:0] = int_sum;
+
+assign sum[8] = int_co[7];
+
+endmodule
+
+Here, fa references another verilog design file containing the definition of for the full adder submodules .This is shown below, from the fa.v file
+
+module fa(input a, input b , input c,  output co, output sum);
+
+	assign  {co,sum} = a +b + c;
+	
+endmodule
+
 
 $ gvim rca.v fa.v -o
 
 ![image](https://user-images.githubusercontent.com/123365758/215290267-23031877-5166-499d-82b1-f52c7dbea65b.png)
+
+In the RCA verilog code, we instantiate fa in a loop using generate for outside the always block.
+
+Rules for addition :
+
+N + N bit number --> Sum will be N + 1 bits N +M bit number --> Sum will be max(N,M) +1 bits
+
+Now, let us simulate this design in verilog and view its waveform with GKTWave .As the rca design referances the file fa.v , we must specify it in our commands as follows
+
+iverilog fa.v rca.v tb_rca.v
+
+./a.out
+
+gtkwave tb_rca.v
+
+the resulting gtkwaveform is shown below that shows an adder being simulated:
+
+![image](https://user-images.githubusercontent.com/123365758/215290807-549c1b57-ed67-4824-8a83-bdb9e27b0f8d.png)
+
 
 
 
