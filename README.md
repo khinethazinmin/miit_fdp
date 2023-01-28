@@ -817,6 +817,91 @@ Output follows i2 at default case,if i1 and io go low. Hence a 4X1 mux is synthe
 
 ![image](https://user-images.githubusercontent.com/123365758/215285774-0cdf4c36-86b8-40d4-a015-c9a8b7b550ab.png)
 
+Example 5: Partial Assignments
+
+module partial_case_assign (input i0 , input i1 , input i2 , input [1:0] sel , output reg y , output reg x);
+
+always @ (*)
+
+begin
+
+	cae(sel)
+	
+		2'b00: begin
+			y = i0;
+			x = i2;
+			end
+		2'b01: y = i1;
+		default: begin 
+			x = i1;
+			y = i2;
+			end
+	endcase
+	
+end
+
+endmodule
+
+Expected Circuit: The 2X1 mux with output y is inferred without any latch. To find out the latching condition of the second mux we take the help of the following truth table:
+
+sel[1]	sel[0]	x
+
+0	0	i2
+
+0	1	latch
+
+1	0	i1
+
+1	1	i1
+
+Condition for enabling:
+
+              en=sel[1]+!(sel[0]) 
+	  
+# Using Redundancy Theorem
+
+Yosys implementation of the above design after synthesis,
+
+![image](https://user-images.githubusercontent.com/123365758/215287801-e097395f-dab3-435c-805d-134d57200e6e.png)
+
+As expected, Only 1 D latch is inferred for X. No latch is inferred for y.
+
+Example 6: Design of 4X1 mux having overlapping cases
+
+module bad_case (input i0 , input i1 , input i2 , input [1:0] sel , output reg y);
+
+always @ (*)
+
+begin
+
+	cae(sel)
+	
+		2'b00: y = i0;
+		2'b01: y = i1;
+		2'b10: y = i2;
+		2'b1?: y = i3;
+		
+	endcase
+end
+
+endmodule
+
+In gtkwaveform of RTL simulation:
+
+![image](https://user-images.githubusercontent.com/123365758/215288139-3fd93039-f675-4f35-a787-452096d067c5.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215288232-03283967-2139-41d4-b362-e183870cb3e3.png)
+
+Observation : When sel[1:0]=11, the output neither follows i2 nor i3. It simply latches to 1.
+
+Whereas while running GLS on the netlist,the waveform of the synthesized netlist behaves as 4X1 mux as shown below.
+
+![image](https://user-images.githubusercontent.com/123365758/215288553-5495b7f1-aa57-43ac-9e22-2b5481fdadf6.png)
+
+Thus ,Overlapping cases confuse the simulator and leads to Synthesis-Simulation Mismatches.
+
+
+
 
 
 
