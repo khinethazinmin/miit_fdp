@@ -1089,6 +1089,60 @@ the resulting gtkwaveform is shown below that shows an adder being simulated:
 
 ![image](https://user-images.githubusercontent.com/123365758/215290807-549c1b57-ed67-4824-8a83-bdb9e27b0f8d.png)
 
+# Day6
+
+# FPGAs - Fabric, Design and Architecture
+
+![image](https://user-images.githubusercontent.com/123365758/215980794-82ba01cd-93ee-442a-b4b6-ff1b3b8f6156.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215980843-3c3d14c9-da05-41a1-9708-44a3eaae2691.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215980888-3f387b6e-5667-438e-8806-c86abcf3bc61.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215980921-179265ea-e9c8-41e6-9c99-b0d8a154e6e1.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215980975-0976149f-079d-4c38-9b5c-5a35e47f3ee7.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215981046-ebe459e5-4760-4919-9b6c-c4d207c9f2ec.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215981097-e36f0d18-3944-4eaf-bd0c-2ec72cb24b8f.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215981150-d0acf14c-04a6-4146-b25d-ba23cc8794d9.png)
+
+warming
+
+![image](https://user-images.githubusercontent.com/123365758/215981203-753dcdd4-97e2-4976-83a0-38717b5f2556.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215981286-6934377e-e5b0-4199-b097-49dc0c7a372d.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215981329-e06cd435-0019-45cf-b232-da12383e3961.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215981392-b9f4dd24-82bb-4aa2-a876-92111031d472.png)
+
+![image](https://user-images.githubusercontent.com/123365758/215981431-b982ea02-e5fa-41f0-8891-a47cc9ef3b7e.png)
+
+Error1
+
+![image](https://user-images.githubusercontent.com/123365758/215981500-abdcc362-c79d-4360-a55c-dd16f4f4bac1.png)
+
+Error2
+
+![image](https://user-images.githubusercontent.com/123365758/215981604-7bf36718-069a-4f21-a8e6-e947a577df4f.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
